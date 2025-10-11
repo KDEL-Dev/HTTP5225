@@ -1,27 +1,66 @@
 
 <?php
+
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(E_ALL);
+
   include('functions.php');
   //secure();
 
-  if(isset($_POST['addSchool'])){
+  if(isset($_POST['addSchool']))
+    {
     // print_r($_POST);
     $schoolName = $_POST['schoolName'];
     $schoolLevel = $_POST['schoolLevel'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
-
+    $boardName = $_POST['boardName'];
+    $schoolNumber = $_POST['schoolNumber'];
+    $schoolSpecialConditions = $_POST['schoolSpecialConditions'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $province = $_POST['province'];
+    $postalCode = $_POST['postalCode'];
+    $fax = $_POST['fax'];
+    $dateOpen = $_POST['dateOpen'];
+    $gradeRange = $_POST['gradeRange'];
+    $schoolLanguage = $_POST['schoolLanguage'];
     // Connection string
     include('reusable/conn.php');
     $query = "INSERT INTO schools (
                 `School Name`, 
                 `School Level`, 
                 `Phone`, 
-                `Email`) 
+                `Email`,
+                `Board Name`,
+                `School Number`,
+                `School Special Conditions`,
+                `Street`,
+                `City`,
+                `Province`,
+                `Postal Code`,
+                `Fax`,
+                `Grade Range`,
+                `Date Open`,
+                `School Language`) 
               VALUES (
               '" . mysqli_real_escape_string($connect, $schoolName) . "',
               '" . mysqli_real_escape_string($connect, $schoolLevel) . "',
               '" . mysqli_real_escape_string($connect, $phone) . "',
-              '" . mysqli_real_escape_string($connect, $email) . "')";
+              '" . mysqli_real_escape_string($connect, $email) . "',
+              '" . mysqli_real_escape_string($connect, $boardName) . "',
+              '" . mysqli_real_escape_string($connect, $schoolNumber) . "',
+              '" . mysqli_real_escape_string($connect, $schoolSpecialConditions) . "',
+              '" . mysqli_real_escape_string($connect, $street) . "',
+              '" . mysqli_real_escape_string($connect, $city) . "',
+              '" . mysqli_real_escape_string($connect, $province) . "',
+              '" . mysqli_real_escape_string($connect, $postalCode) . "',
+              '" . mysqli_real_escape_string($connect, $fax) . "',
+              '" . mysqli_real_escape_string($connect, $dateOpen) . "',
+              '" . mysqli_real_escape_string($connect, $gradeRange) . "',
+              '" . mysqli_real_escape_string($connect, $schoolLanguage) . "')";
+    
 
     $school = mysqli_query($connect, $query);
 
@@ -64,11 +103,11 @@
       </div>
     </div>
   </nav>
-  <div class="container-fluid">
+  <div class="container-fluid bg-secondary mb-5">
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1 class="display-4 mt-5 mb-5">All Schools</h1>
+          <h1 class="display-4 fw-bold mt-5 mb-5 text-white">All Schools</h1>
         </div>
       </div>
     </div>
@@ -131,10 +170,6 @@
               <input type="text" class="form-control" id="postalCode" name="postalCode">
             </div>
             <div class="mb-3">
-            <label for="phone" class="form-label">Phone</label>
-              <input type="text" class="form-control" id="phone" name="phone">
-            </div>
-            <div class="mb-3">
             <label for="fax" class="form-label">Fax</label>
               <input type="text" class="form-control" id="fax" name="fax">
             </div>
@@ -143,8 +178,8 @@
               <input type="text" class="form-control" id="dateOpen" name="dateOpen">
             </div>
             <div class="mb-3">
-            <label for="schoolGrade" class="form-label">School Grade</label>
-              <input type="text" class="form-control" id="schoolGrade" name="schoolGrade">
+            <label for="gradeRange" class="form-label">Grade Range</label>
+              <input type="text" class="form-control" id="gradeRange" name="gradeRange">
             </div>
             <div class="mb-3">
             <label for="schoolLanguage" class="form-label">School Language</label>
