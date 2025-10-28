@@ -1,0 +1,13 @@
+SELECT 
+    LINEAR_NAME_FULL_1, 
+    LINEAR_NAME_FULL_2, 
+    NAME, 
+    WARD_1, 
+    WARD_2, 
+    DATE(ACTIVATION_DATE) AS date_only
+FROM 
+    red_light_cameras_data___4326
+WHERE 
+    district = 'Toronto and East York'
+
+ORDER BY WARD_1 ASC;
